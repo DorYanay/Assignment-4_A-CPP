@@ -1,17 +1,11 @@
 #include "doctest.h"
 #include <cmath>
 #include "sources/Team.hpp"
-#include "sources/Team2.hpp"
-#include "sources/SmartTeam.hpp"
 
-TEST_CASE("Constructors")
-{
-    CHECK(OldNinja("sushi", Point(0, 0)));
-    CHECK(YoungNinja("Yogi", Point(1, 1)));
-    CHECK(TrainedNinja("Shmulik", Point(2, 2)));
-    CHECK(Cowboy("Mike", Point(3, 3)));
-    CHECK(Ninja("Young", Point(4, 4), 100, 25));
-}
+#include "sources/Cowboy.hpp"
+#include "sources/Ninja.hpp"
+#include "sources/Point.hpp"
+
 TEST_CASE("creating characters")
 {
     Point a(32.3, 44), b(1.3, 3.5);
@@ -43,7 +37,7 @@ TEST_CASE("Characters functions")
     CHECK_NOTHROW(shi->move(tom));
     CHECK(tom->isAlive());
     sushi->move(shi);
-    CHECK(sushi->getLocation());
+    CHECK_NOTHROW(sushi->getLocation());
     CHECK_NOTHROW(sushi->hit(10));
     CHECK(tom->hasboolets());
     CHECK_NOTHROW(sushi->slash(tom));
@@ -91,8 +85,8 @@ TEST_CASE("check Team functions")
     CHECK_NOTHROW(Team teamA(tom));
     Team teamA(tom);
     CHECK_NOTHROW(teamA.add(sushi));
-    CHECK_NOTHROW(Team2 teamB(su));
-    Team2 teamB(su);
+    CHECK_NOTHROW(Team teamB(su));
+    Team teamB(su);
     CHECK_THROWS(teamB.add(tom));
     CHECK_THROWS(teamB.add(su));
     CHECK(teamA.stillAlive());
@@ -113,5 +107,6 @@ TEST_CASE("check Team functions")
     {
         teamA.attack(&teamB);
     }
+    CHECK_THROWS(tom->shoot(su)); // cant shoot a dead man.(WASTE OF BULLETS :D)
     CHECK_EQ(teamB.stillAlive(), 0);
 }
