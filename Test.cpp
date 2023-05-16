@@ -64,8 +64,11 @@ TEST_CASE("distance between characters")
     OldNinja *sushi = new OldNinja("sushi", b);
     YoungNinja *su = new YoungNinja("su", b);
     TrainedNinja *shi = new TrainedNinja("shi", b);
-    CHECK(sushi->distance(*su) == 0);
-    CHECK(sushi->distance(*tom) != 0);
+    CHECK(sushi->distance(su) == 0);
+    CHECK(sushi->distance(tom) != 0);
+    Cowboy cow("yom", Point(0, 0));
+    OldNinja Old("Old", b);
+    Old.distance(&Old);
 }
 TEST_CASE("check Team functions")
 {

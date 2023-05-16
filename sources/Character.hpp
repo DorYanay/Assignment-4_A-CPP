@@ -13,7 +13,7 @@ class Character
 public:
     Character(string, const Point &, int);
     bool isAlive();
-    double distance(const Character &);
+    double distance(const Character *);
     void hit(int dmg);
     string getName();
     Point getLocation();
