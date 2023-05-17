@@ -42,6 +42,16 @@ TEST_CASE("Characters functions")
     CHECK(tom->hasboolets());
     CHECK_NOTHROW(sushi->slash(tom));
     CHECK_NOTHROW(tom->reload());
+    YoungNinja asu("asu", a);
+    TrainedNinja ashi("ashi", b);
+    Cowboy asura("asura", a);
+    Ninja Nin("Nin", a, 100, 151515);
+    CHECK_EQ(Nin.distance(&asura), 0);
+    CHECK(asura.hasboolets());
+    CHECK_NOTHROW(asura.shoot(&asu));
+    CHECK_NOTHROW(asura.shoot(su));
+    CHECK_NOTHROW(asu.slash(&asura));
+    CHECK_NOTHROW(asu.move(su));
 }
 TEST_CASE("distance between points")
 {
